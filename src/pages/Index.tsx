@@ -4,6 +4,9 @@ import Navigation from "@/components/Navigation";
 import RawMaterials from "@/components/RawMaterials";
 import SareeInventory from "@/components/SareeInventory";
 import Sales from "@/components/Sales";
+import Workers from "@/components/Workers";
+import Machines from "@/components/Machines";
+import Reports from "@/components/Reports";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -19,26 +22,11 @@ const Index = () => {
       case "sales":
         return <Sales />;
       case "workers":
-        return (
-          <div className="text-center py-12">
-            <h2 className="text-2xl font-bold text-foreground mb-4">Workers Management</h2>
-            <p className="text-muted-foreground">Coming soon - Worker management module</p>
-          </div>
-        );
+        return <Workers />;
       case "machines":
-        return (
-          <div className="text-center py-12">
-            <h2 className="text-2xl font-bold text-foreground mb-4">Machine Management</h2>
-            <p className="text-muted-foreground">Coming soon - Machine tracking module</p>
-          </div>
-        );
+        return <Machines />;
       case "reports":
-        return (
-          <div className="text-center py-12">
-            <h2 className="text-2xl font-bold text-foreground mb-4">Reports & Analytics</h2>
-            <p className="text-muted-foreground">Coming soon - Advanced reporting module</p>
-          </div>
-        );
+        return <Reports />;
       default:
         return <Dashboard />;
     }

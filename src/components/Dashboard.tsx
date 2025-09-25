@@ -13,8 +13,14 @@ import {
   ShoppingCart
 } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell } from "recharts";
+import { useState } from "react";
+import SettingsDialog from "./SettingsDialog";
+import NewProductionDialog from "./NewProductionDialog";
 
 const Dashboard = () => {
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isProductionOpen, setIsProductionOpen] = useState(false);
+
   // Mock data for demonstration
   const monthlyData = [
     { month: "Jan", profit: 45000, sales: 120000, cost: 75000 },
@@ -83,11 +89,11 @@ const Dashboard = () => {
           <p className="text-muted-foreground mt-1">Monitor your production, inventory, and sales performance</p>
         </div>
         <div className="flex gap-3">
-          <Button variant="outline" className="shadow-card">
+          <Button variant="outline" className="shadow-card" onClick={() => setIsSettingsOpen(true)}>
             <Settings className="w-4 h-4 mr-2" />
             Settings
           </Button>
-          <Button className="bg-gradient-primary shadow-manufacturing">
+          <Button className="bg-gradient-primary shadow-manufacturing" onClick={() => setIsProductionOpen(true)}>
             <Factory className="w-4 h-4 mr-2" />
             New Production
           </Button>
@@ -231,6 +237,10 @@ const Dashboard = () => {
           </div>
         </CardContent>
       </Card>
+
+      {/* Dialogs */}
+      <SettingsDialog open={isSettingsOpen} onOpenChange={setIsSettingsOpen} />
+      <NewProductionDialog open={isProductionOpen} onOpenChange={setIsProductionOpen} />
     </div>
   );
 };
